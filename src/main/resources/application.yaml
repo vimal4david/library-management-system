@@ -1,1 +1,11 @@
-
+spring:
+  datasource:
+    url: jdbc:h2:mem:library #set DB name to library
+    username: sa # Default username & password
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true # Initialise H2 with data from data.sql
+  h2:
+    console.enabled: true # Config to enable H2 client access
