@@ -62,7 +62,7 @@ public class LoanServiceImpl implements LoanService {
     }
 
     private Item inventoryToItem(Inventory inventory) {
-        return new Item(inventory.getId(), inventory.getItemId(), ItemType.valueOf(inventory.getItemType()), inventory.getTitle());
+        return new Item(inventory.getItemId(), ItemType.valueOf(inventory.getItemType()), inventory.getTitle());
     }
 
     private void addItemDetailsToInventory(Inventory inventory, Boolean isOnLoan, String username, Instant borrowedTimeStamp) {
