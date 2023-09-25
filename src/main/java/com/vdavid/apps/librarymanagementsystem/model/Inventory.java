@@ -44,13 +44,4 @@ public class Inventory {
         this.borrower = null;
         this.borrowedTimestamp = null;
     }
-
-    public Inventory(Integer itemId, String itemType, String title, Boolean isOnLoan, String borrower, Instant borrowedTimestamp) {
-        this.itemId = itemId;
-        this.itemType = itemType;
-        this.title = title;
-        this.isOnLoan = isOnLoan;
-        this.borrower = borrower;
-        this.borrowedTimestamp = borrowedTimestamp;
-    }
 }
