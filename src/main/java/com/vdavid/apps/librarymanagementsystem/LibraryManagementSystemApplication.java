@@ -23,20 +23,21 @@ public class LibraryManagementSystemApplication {
         log.info("Scenario 3 ==> Borrow valid book");
         loanService.borrowItem(new User("vdavid"), ItemType.BOOK, "Pi");
         log.info("==> Updated Inventory after user vdavid borrowed a book with title Pi: {}", inventoryService.getCurrentInventory());
-        log.info("==> Borrowed items for the user vdavid: {}", loanService.getBorrowedItemsForAUser(new User("vdavid")));
-        log.info("==> Is book title Pi available to loan: {}", loanService.isItemAvailableToLoan(ItemType.BOOK, "Pi"));
 
-        log.info("Scenario 4 ==> Borrow invalid book");
+        log.info("Scenario 4 ==> Borrowed items for the user vdavid: {}", loanService.getBorrowedItemsForAUser(new User("vdavid")));
+
+        log.info("Scenario 5 ==> Is book title Pi available to loan: {}", loanService.isItemAvailableToLoan(ItemType.BOOK, "Pi"));
+
+        log.info("Scenario 6 ==> Borrow invalid book");
         loanService.borrowItem(new User("vdavid"), ItemType.BOOK, "Invalid Book");
 
-        log.info("Scenario 5 ==> Return valid book");
+        log.info("Scenario 7 ==> Return valid book");
         loanService.returnItem(new User("vdavid"), ItemType.BOOK, "Pi");
-        loanService.returnItem(new User("vdavid"), ItemType.BOOK, "Invalid Book");
         log.info("==> Updated Inventory after user vdavid returned a book with title Pi: {}", inventoryService.getCurrentInventory());
         log.info("==> Borrowed items for the user vdavid: {}", loanService.getBorrowedItemsForAUser(new User("vdavid")));
         log.info("==> Is book title Pi available to loan: {}", loanService.isItemAvailableToLoan(ItemType.BOOK, "Pi"));
 
-        log.info("Scenario 6 ==> Return invalid book");
+        log.info("Scenario 8 ==> Return invalid book");
         loanService.returnItem(new User("vdavid"), ItemType.BOOK, "Invalid Book");
     }
 }
