@@ -4,11 +4,14 @@ import com.vdavid.apps.librarymanagementsystem.model.Inventory;
 import com.vdavid.apps.librarymanagementsystem.repository.InventoryRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @Service
 public class InventoryServiceImpl implements InventoryService {
 
+    private static final int LOAN_PERIOD_IN_DAYS = 7;
     private final InventoryRepository inventoryRepository;
 
     public InventoryServiceImpl(InventoryRepository inventoryRepository) {
@@ -22,6 +25,6 @@ public class InventoryServiceImpl implements InventoryService {
 
     @Override
     public List<Inventory> getOverdueItems() {
-        return null;
+        return inventoryRepository.findAllByBorrowedTimestampBefore(Instant.now().minus(LOAN_PERIOD_IN_DAYS, ChronoUnit.DAYS));
     }
 }

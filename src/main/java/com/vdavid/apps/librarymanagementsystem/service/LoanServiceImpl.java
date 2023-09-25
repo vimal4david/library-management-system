@@ -31,7 +31,7 @@ public class LoanServiceImpl implements LoanService {
             Inventory inventory = inventoryAsOptional.get();
             addItemDetailsToInventory(inventory, true, user.name(), Instant.now());
             inventoryRepository.save(inventory);
-            log.info("Borrowed item: {} of type: {} for user: {}", title, itemType.name(), user.name());
+            log.info("Borrowed item {} of type {} for user {}", title, itemType.name(), user.name());
         } else {
             log.info("No items available in inventory to borrow on title: {} and type: {}", title, itemType.name());
         }
@@ -45,9 +45,9 @@ public class LoanServiceImpl implements LoanService {
             Inventory inventory = itemsInLoanAsOptional.get();
             addItemDetailsToInventory(inventory, null, null, null);
             inventoryRepository.save(inventory);
-            log.info("Returned item: {} of type: {} for user: {}", title, itemType.name(), user.name());
+            log.info("Returned item {} of type {} for user {}", title, itemType.name(), user.name());
         } else {
-            log.info("No items in loan for user: {} with title: {} and item type: {}", user.name(), title, itemType.name());
+            log.info("No items in loan for user {} with title {} and item type {}", user.name(), title, itemType.name());
         }
     }
 
