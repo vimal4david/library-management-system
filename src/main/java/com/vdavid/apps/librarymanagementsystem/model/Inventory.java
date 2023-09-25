@@ -1,17 +1,20 @@
 package com.vdavid.apps.librarymanagementsystem.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.Data;
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.time.Instant;
 
 @Entity
 @Table(name = "inventory")
-@Data
+@Getter
+@Setter
+@NoArgsConstructor(force = true)
+@ToString
 public class Inventory {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "UniqueID", nullable = false)
     private Long id;
 
@@ -23,4 +26,31 @@ public class Inventory {
 
     @Column(name = "Title", nullable = false)
     private String title;
+
+    @Column(name = "IsOnLoan")
+    private Boolean isOnLoan;
+
+    @Column(name = "Borrower")
+    private String borrower;
+
+    @Column(name = "BorrowedTimestamp")
+    private Instant borrowedTimestamp;
+
+    public Inventory(Integer itemId, String itemType, String title) {
+        this.itemId = itemId;
+        this.itemType = itemType;
+        this.title = title;
+        this.isOnLoan = false;
+        this.borrower = null;
+        this.borrowedTimestamp = null;
+    }
+
+    public Inventory(Integer itemId, String itemType, String title, Boolean isOnLoan, String borrower, Instant borrowedTimestamp) {
+        this.itemId = itemId;
+        this.itemType = itemType;
+        this.title = title;
+        this.isOnLoan = isOnLoan;
+        this.borrower = borrower;
+        this.borrowedTimestamp = borrowedTimestamp;
+    }
 }
